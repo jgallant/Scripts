@@ -1,0 +1,7 @@
+#!/bin/sh
+
+SERVER="example.com";
+
+zip -jr "$TR_TORRENT_NAME.zip" "$TR_TORRENT_DIR/$TR_TORRENT_NAME";
+scp "$TR_TORRENT_NAME.zip" $SERVER:"/var/www/music/";
+rm "$TR_TORRENT_NAME.zip";

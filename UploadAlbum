@@ -1,0 +1,17 @@
+#!/bin/sh
+
+SERVER="example.com";
+
+if [ ! $# == 1 ]
+then
+	echo "You must specify a folder to zip and upload.";
+	echo "Usage: ./script /path/to/folder";
+	exit 1;
+fi
+
+FOLDER=$(dirname "$1")"/"$(basename "$1");
+ZIPNAME=$(basename "$1");
+
+zip -jr "$ZIPNAME.zip" "$FOLDER";
+scp "$ZIPNAME.zip" $SERVER:"/var/www/music/";
+rm "$ZIPNAME.zip";
